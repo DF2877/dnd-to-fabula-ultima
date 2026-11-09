@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.input-panel {
+    width: 50%;
+    padding: 2rem;
+    background: #1e1e1e;
+}
+
+.sheet-panel {
+    width: 50%;
+    padding: 2rem;
+    background: #252525;
+    overflow-y: auto;
+}
+
+input,
+select {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: .75rem;
+
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+button {
+    width: 100%;
+    padding: .75rem;
+
+    background: #4a6fff;
+    color: white;
+    border: none;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #7390ff;
+}
+
+#characterSheet {
+    background: #333;
+    border-radius: 10px;
+    padding: 1rem;
+}
