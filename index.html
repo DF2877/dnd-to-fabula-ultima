@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="input-panel">
+
+        <h1>Character Builder</h1>
+
+        <label>Name</label>
+        <input type="text" id="name"/>
+
+        <label>Race</label>
+        <select id="race">
+            <option>Human</option>
+            <option>Elf</option>
+            <option>Dwarf</option>
+        </select>
+
+        <label>Class</label>
+        <select id="class">
+            <option>Fighter</option>
+            <option>Wizard</option>
+            <option>Rogue</option>
+        </select>
+
+        <button id="generateBtn">
+            Generate Character
+        </button>
+
+    </div>
+
+    <div class="sheet-panel">
+
+        <h1>Character Sheet</h1>
+
+        <div id="characterSheet">
+
+            <h2>Name Placeholder</h2>
+
+            <p>Race Placeholder</p>
+
+            <p>Class Placeholder</p>
+
+            <p>Stats Placeholder</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
