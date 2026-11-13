@@ -150,6 +150,9 @@ function generateCharacter() {
 
     validateTraits();
 
+    const species =
+    document.getElementById("species").value;
+
     character.name = name;
 character.cr = cr;
 character.level = level;
