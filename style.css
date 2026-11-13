@@ -125,19 +125,6 @@ button:hover {
     font-weight: bold;
 }
 
-.elements {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 2px;
-
-    padding: 2px;
-
-    background: #555;
-}
-
 .element {
 
     text-align: center;
@@ -221,4 +208,15 @@ ul {
 
     display: grid;
     grid-template-columns: repeat(9, 1fr);
+}
+
+.resources {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+}
+
+.resources div {
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
 }
