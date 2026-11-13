@@ -39,19 +39,21 @@ function validateTraits() {
 }
 
 const character = {
+
+    name: "",
+
+    cr: 0,
+
+    level: 0,
+
+    traits: [],
+
     species: "",
-    affinities: {
-        fire: 0,
-        ice: 0,
-        bolt: 0,
-        earth: 0,
-        air: 0,
-        light: 0,
-        dark: 0,
-        poison: 0,
-        physical: 0
-    },
+
+    affinities: {},
+
     specialRules: []
+
 };
 
 function parseCR(value) {
@@ -113,15 +115,15 @@ function resetAffinities() {
     };
 }
 
-function setAffinity(affinities, element, value) {
+function setAffinity(element, value) {
 
-    affinities[element] =
-        Math.max(affinities[element], value);
+    character.affinities[element] =
+        Math.max(character.affinities[element], value);
 }
 
-function applyVulnerability(affinities, element) {
+function applyVulnerability(element) {
 
-    affinities[element]--;
+    character.affinities[element]--;
 }
 
 function generateCharacter() {
@@ -148,6 +150,12 @@ function generateCharacter() {
 
     validateTraits();
 
+    character.name = name;
+character.cr = cr;
+character.level = level;
+character.traits = traits;
+character.species = species;
+    
     document.getElementById("characterName").textContent =
         name || "Unnamed Character";
 
@@ -163,23 +171,15 @@ function generateCharacter() {
     document.getElementById("characterSpecies")
     .textContent = character.species;
 
-    const species =
-    document.getElementById("species").value;
+character.affinities = resetAffinities();
 
-document.getElementById(
-    "characterSpecies"
-).textContent = species;
-
-let affinities = resetAffinities();
-
-let specialRules = [];
-}
+character.specialRules = [];
 
 switch (species) {
 
     case "Beast":
 
-        specialRules.push(
+        character.specialRules.push(
             "Cannot acquire the Use Equipment Skill."
         );
 
@@ -188,18 +188,16 @@ switch (species) {
     case "Construct":
 
         setAffinity(
-            affinities,
             "earth",
             1
         );
 
         setAffinity(
-            affinities,
             "poison",
             2
         );
 
-        specialRules.push(
+        character.specialRules.push(
             "Immune to poisoned."
         );
 
@@ -207,7 +205,7 @@ switch (species) {
 
     case "Humanoid":
 
-        specialRules.push(
+        character.specialRules.push(
             "Use Equipment."
         );
 
@@ -215,7 +213,7 @@ switch (species) {
 
 }
 
-for (const element in affinities) {
+for (const element in character.affinities) {
 
     const div =
         document.getElementById(
@@ -225,7 +223,7 @@ for (const element in affinities) {
     div.className = "element";
 
     const value =
-        affinities[element];
+        character.affinities[element];
 
     let state = "neutral";
 
@@ -253,7 +251,7 @@ const ruleList =
 
 ruleList.innerHTML = "";
 
-specialRules.forEach(rule => {
+character.specialRules.forEach(rule => {
 
     const li =
         document.createElement("li");
@@ -262,3 +260,5 @@ specialRules.forEach(rule => {
 
     ruleList.appendChild(li);
 });
+
+}
