@@ -47,11 +47,28 @@ function generateCharacter() {
 
     if (traits.length !== 4) {
 
-        alert(
-            "Please enter exactly 4 traits separated by commas."
-        );
+        const traitsText =
+    document.getElementById("traits").value;
 
-        return;
+const traits =
+    traitsText
+        .split(",")
+        .map(t => t.trim())
+        .filter(t => t);
+
+const warning =
+    document.getElementById("traitsWarning");
+
+if (traits.length !== 4) {
+
+    warning.textContent =
+        `Recommended: 4 traits (currently ${traits.length}).`;
+
+} else {
+
+    warning.textContent = "";
+
+}
     }
 
     document.getElementById("characterName").textContent =
