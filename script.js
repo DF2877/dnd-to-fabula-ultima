@@ -2,6 +2,34 @@ document
     .getElementById("generateBtn")
     .addEventListener("click", generateCharacter);
 
+document
+    .getElementById("traits")
+    .addEventListener("input", validateTraits);
+
+function validateTraits() {
+
+    const traits =
+        document.getElementById("traits")
+            .value
+            .split(",")
+            .map(t => t.trim())
+            .filter(t => t);
+
+    const warning =
+        document.getElementById("traitsWarning");
+
+    if (traits.length !== 4) {
+
+        warning.textContent =
+            `Recommended: 4 traits (currently ${traits.length}).`;
+
+    } else {
+
+        warning.textContent = "";
+
+    }
+}
+
 function parseCR(value) {
 
     value = value.trim();
@@ -45,31 +73,7 @@ function generateCharacter() {
             .map(t => t.trim())
             .filter(t => t);
 
-    if (traits.length !== 4) {
-
-        const traitsText =
-    document.getElementById("traits").value;
-
-const traits =
-    traitsText
-        .split(",")
-        .map(t => t.trim())
-        .filter(t => t);
-
-const warning =
-    document.getElementById("traitsWarning");
-
-if (traits.length !== 4) {
-
-    warning.textContent =
-        `Recommended: 4 traits (currently ${traits.length}).`;
-
-} else {
-
-    warning.textContent = "";
-
-}
-    }
+    validateTraits();
 
     document.getElementById("characterName").textContent =
         name || "Unnamed Character";
