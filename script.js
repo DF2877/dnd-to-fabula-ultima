@@ -30,6 +30,22 @@ function validateTraits() {
     }
 }
 
+const character = {
+    species: "",
+    affinities: {
+        fire: 0,
+        ice: 0,
+        bolt: 0,
+        earth: 0,
+        air: 0,
+        light: 0,
+        dark: 0,
+        poison: 0,
+        physical: 0
+    },
+    specialRules: []
+};
+
 function parseCR(value) {
 
     value = value.trim();
@@ -49,6 +65,68 @@ function calculateLevel(cr) {
     const doubled = cr * 2;
 
     return Math.ceil(doubled / 5) * 5;
+}
+
+function resetAffinities(character) {
+
+    for (const element in character.affinities) {
+        character.affinities[element] = 0;
+    }
+
+    character.specialRules = [];
+}
+
+switch(character.species) {
+
+    case "Beast":
+
+        character.specialRules.push(
+            "Cannot acquire the Use Equipment Skill."
+        );
+
+        break;
+
+    case "Construct":
+
+        character.affinities.poison = 2;
+        character.affinities.earth = 1;
+
+        character.specialRules.push(
+            "Immune to poisoned."
+        );
+
+        break;
+
+    case "Humanoid":
+
+        character.specialRules.push(
+            "Use Equipment."
+        );
+
+        break;
+}
+
+function updateSpeciesInputs() {
+
+    const species =
+        document.getElementById("species").value;
+
+    const options =
+        document.getElementById("affinityOptions");
+
+    if (
+        species === "Demon" ||
+        species === "Elemental" ||
+        species === "Plant"
+    ) {
+
+        options.style.display = "block";
+
+    } else {
+
+        options.style.display = "none";
+
+    }
 }
 
 function generateCharacter() {
@@ -83,4 +161,11 @@ function generateCharacter() {
 
     document.getElementById("characterTraits").textContent =
         traits.join(", ");
+
+    character.species =
+    document.getElementById("species").value;
+
+    document.getElementById("characterSpecies")
+    .textContent = character.species;
 }
+
