@@ -26,6 +26,20 @@ const affinityText = {
     "3": "AB"
 };
 
+const allElements = [
+
+    { value: "fire", label: "Fire" },
+    { value: "ice", label: "Ice" },
+    { value: "bolt", label: "Bolt" },
+    { value: "earth", label: "Earth" },
+    { value: "air", label: "Air" },
+    { value: "light", label: "Light" },
+    { value: "dark", label: "Dark" },
+    { value: "poison", label: "Poison" },
+    { value: "physical", label: "Physical" }
+
+];
+
 function validateTraits() {
 
     const traits =
@@ -114,6 +128,24 @@ function calculateLevel(cr) {
     return Math.ceil(doubled / 5) * 5;
 }
 
+function populateAffinityDropdown(dropdown, options) {
+
+    dropdown.innerHTML = "";
+
+    options.forEach(option => {
+
+        const el =
+            document.createElement("option");
+
+        el.value = option.value;
+
+        el.textContent = option.label;
+
+        dropdown.appendChild(el);
+
+    });
+}
+
 function updateSpeciesInputs() {
 
     const species =
@@ -160,6 +192,16 @@ function updateSpeciesInputs() {
             affinity2Label.textContent =
                 "Resistance #2";
 
+    populateAffinityDropdown(
+        affinity1,
+        allElements
+    );
+
+    populateAffinityDropdown(
+        affinity2,
+        allElements
+    );
+
             break;
 
         case "Elemental":
@@ -172,6 +214,13 @@ function updateSpeciesInputs() {
             affinity1Label.textContent =
                 "Additional Immunity";
 
+    populateAffinityDropdown(
+        affinity1,
+        allElements.filter(
+            e => e.value !== "poison"
+        )
+    );
+            
             break;
 
         case "Plant":
@@ -183,6 +232,16 @@ function updateSpeciesInputs() {
 
             affinity1Label.textContent =
                 "Elemental Vulnerability";
+
+    populateAffinityDropdown(
+        affinity1,
+        [
+            { value: "air", label: "Air" },
+            { value: "bolt", label: "Bolt" },
+            { value: "fire", label: "Fire" },
+            { value: "ice", label: "Ice" }
+        ]
+    );
 
             break;
     }
