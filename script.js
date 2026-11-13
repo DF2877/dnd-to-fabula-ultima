@@ -53,3 +53,80 @@ if (traits.length !== 4) {
     alert("Please enter exactly 4 traits.");
     return;
 }
+
+speciesSelect.addEventListener(
+    "change",
+    updateSpeciesInputs
+);
+
+const affinities = {
+
+    air: "neutral",
+    bolt: "neutral",
+    dark: "neutral",
+    earth: "neutral",
+    fire: "neutral",
+    ice: "neutral",
+    light: "neutral",
+    poison: "neutral",
+    physical: "neutral"
+
+};
+
+const strength = {
+
+    vu: 0,
+    neutral: 1,
+    rs: 2,
+    im: 3,
+    ab: 4
+
+};
+
+function setAffinity(elements, type, value) {
+
+    if (
+        strength[value] >
+        strength[elements[type]]
+    ) {
+        elements[type] = value;
+    }
+}
+
+function applyVulnerability(
+    elements,
+    type
+) {
+
+    const current = elements[type];
+
+    switch(current) {
+
+        case "ab":
+            elements[type] = "im";
+            break;
+
+        case "im":
+            elements[type] = "rs";
+            break;
+
+        case "rs":
+            elements[type] = "neutral";
+            break;
+
+        default:
+            elements[type] = "vu";
+    }
+
+}
+
+const character = {
+
+    species: species,
+    traits: traits,
+
+    affinities: affinities,
+
+    rules: rules
+
+};
