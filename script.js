@@ -10,6 +10,14 @@ document
     .getElementById("species")
     .addEventListener("change", updateSpeciesInputs);
 
+document
+    .getElementById("affinity1")
+    .addEventListener("change", validateAffinities);
+
+document
+    .getElementById("affinity2")
+    .addEventListener("change", validateAffinities);
+
 const affinityText = {
     "-1": "VU",
     "0": "",
@@ -39,6 +47,31 @@ function validateTraits() {
 
         warning.textContent = "";
 
+    }
+}
+
+function validateAffinities() {
+
+    const species =
+        document.getElementById("species").value;
+
+    const affinity1 =
+        document.getElementById("affinity1").value;
+
+    const affinity2 =
+        document.getElementById("affinity2").value;
+
+    const warning =
+        document.getElementById("affinityWarning");
+
+    warning.textContent = "";
+
+    if (
+        species === "Demon" &&
+        affinity1 === affinity2
+    ) {
+        warning.textContent =
+            "Recommended: choose two different resistances.";
     }
 }
 
@@ -153,6 +186,9 @@ function updateSpeciesInputs() {
 
             break;
     }
+
+    document.getElementById("affinityWarning")
+    .textContent = "";
 }
 
 function resetAffinities() {
@@ -308,14 +344,6 @@ switch (species) {
 
 }
 
-    if (
-    species === "Demon" &&
-    affinity1 === affinity2
-) {
-    warning.textContent =
-        "A Demon's two resistances should be different.";
-}
-
 for (const element in character.affinities) {
 
     const div =
@@ -346,6 +374,8 @@ for (const element in character.affinities) {
 `;
     
 }
+
+    validateAffinities();
 
 const ruleList =
     document.getElementById(
