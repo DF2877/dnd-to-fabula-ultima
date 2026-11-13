@@ -16,7 +16,10 @@
         <h1>Character Builder</h1>
 
         <label>Name</label>
-        <input type="text" id="name"/>
+<input type="text" id="name" placeholder="Character name">
+
+<label>CR</label>
+<input type="text" id="cr" placeholder="e.g. 2, 2.5, 1/2">
 
         <label>Race</label>
         <select id="race">
@@ -44,15 +47,16 @@
 
         <div class="header">
 
-            <div>
-                <h1>CUTTERPILLAR</h1>
-            </div>
+    <div>
+        <h1 id="characterName">Unnamed Character</h1>
+    </div>
 
-            <div class="header-right">
-                Lv 5 • Beast
-            </div>
+    <div class="header-right">
+        Lv <span id="characterLevel">5</span> • Beast
+    </div>
 
-        </div>
+</div>
+
 
         <div class="traits">
             <strong>Traits:</strong>
