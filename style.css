@@ -38,7 +38,26 @@ select {
     border: 1px solid #555;
 }
 
+input,
+select,
+textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: .75rem;
+
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
 button {
+    margin-top: 1.5rem;
+
     width: 100%;
     padding: .75rem;
 
@@ -240,12 +259,13 @@ ul {
 }
 
 .attribute-inputs {
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+}
 
-    gap: 0.75rem;
+.attribute-inputs label {
+    margin-bottom: .25rem;
 }
 
 .attribute-inputs div {
