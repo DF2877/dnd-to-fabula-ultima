@@ -6,6 +6,10 @@ document
     .getElementById("traits")
     .addEventListener("input", validateTraits);
 
+document
+    .getElementById("species")
+    .addEventListener("change", updateSpeciesInputs);
+
 const affinityText = {
     "-1": "VU",
     "0": "",
@@ -125,6 +129,8 @@ function applyVulnerability(element) {
 
     character.affinities[element]--;
 }
+
+updateSpeciesInputs();
 
 function generateCharacter() {
 
