@@ -261,3 +261,9 @@ ul {
     background: #222;
 }
 
+.stat {
+
+    display: flex;
+
+    justify-content: space-between;
+}
