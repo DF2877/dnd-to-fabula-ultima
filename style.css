@@ -182,3 +182,43 @@ section h2 {
 ul {
     margin: 0;
 }
+.combat-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.attributes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.attributes div {
+    padding: 1rem;
+    text-align: center;
+    background: #222;
+    border: 1px solid #555;
+    font-weight: bold;
+}
+
+.secondary {
+    display: flex;
+}
+
+.defenses {
+    width: 180px;
+}
+
+.defenses div {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #555;
+    background: #222;
+    font-weight: bold;
+}
+
+.elements {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}
