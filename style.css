@@ -220,3 +220,43 @@ ul {
     text-align: center;
     font-weight: bold;
 }
+
+.combat-secondary {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.combat-secondary div {
+
+    background: #222;
+    border: 1px solid #555;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.resources {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.resources div {
+
+    padding: 1rem;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    border: 1px solid #555;
+}
+
+.hp,
+.mp {
+
+    font-size: 1.3rem;
+
+    color: white;
+}
