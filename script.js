@@ -240,11 +240,11 @@ for (const element in character.affinities) {
         element.charAt(0).toUpperCase() +
         element.slice(1);
 
-    div.textContent =
-        displayName +
-        (affinityText[value]
-            ? " " + affinityText[value]
-            : "");
+    div.innerHTML = `
+    <div>${displayName}</div>
+    <div>${affinityText[value] || "&nbsp;"}</div>
+`;
+    
 }
 
 const ruleList =
