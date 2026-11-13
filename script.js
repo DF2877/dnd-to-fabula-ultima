@@ -36,9 +36,30 @@ function generateCharacter() {
     const level =
         calculateLevel(cr);
 
+    const traitsText =
+        document.getElementById("traits").value;
+
+    const traits =
+        traitsText
+            .split(",")
+            .map(t => t.trim())
+            .filter(t => t);
+
+    if (traits.length !== 4) {
+
+        alert(
+            "Please enter exactly 4 traits separated by commas."
+        );
+
+        return;
+    }
+
     document.getElementById("characterName").textContent =
         name || "Unnamed Character";
 
     document.getElementById("characterLevel").textContent =
         level;
+
+    document.getElementById("characterTraits").textContent =
+        traits.join(", ");
 }
