@@ -401,6 +401,30 @@ switch (species) {
 
     break;
 
+        case "Undead":
+
+    setAffinity("dark", 2);
+
+    setAffinity("poison", 2);
+
+    applyVulnerability("light");
+
+    character.specialRules.push(
+        "Immune to poisoned."
+    );
+
+    character.specialRules.push(
+        "When an effect (such as an Arcanum, a potion or a spell) would cause an undead creature to recover Hit Points, whoever controls that effect may instead have the undead lose half as many Hit Points."
+    );
+
+    break;
+
+        case "Monster":
+
+    // No innate affinities
+    // No innate special rules
+
+    break;
 }
 
 for (const element in character.affinities) {
