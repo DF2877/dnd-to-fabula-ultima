@@ -89,18 +89,69 @@ function updateSpeciesInputs() {
     const options =
         document.getElementById("affinityOptions");
 
-    if (
-        species === "Demon" ||
-        species === "Elemental" ||
-        species === "Plant"
-    ) {
+    const affinity1 =
+        document.getElementById("affinity1");
 
-        options.style.display = "block";
+    const affinity2 =
+        document.getElementById("affinity2");
 
-    } else {
+    const affinity1Label =
+        document.getElementById("affinity1Label");
 
-        options.style.display = "none";
+    const affinity2Label =
+        document.getElementById("affinity2Label");
 
+    options.style.display = "none";
+
+    affinity1.style.display = "none";
+    affinity2.style.display = "none";
+
+    affinity1Label.style.display = "none";
+    affinity2Label.style.display = "none";
+
+    switch(species) {
+
+        case "Demon":
+
+            options.style.display = "block";
+
+            affinity1.style.display = "block";
+            affinity2.style.display = "block";
+
+            affinity1Label.style.display = "block";
+            affinity2Label.style.display = "block";
+
+            affinity1Label.textContent =
+                "Resistance #1";
+
+            affinity2Label.textContent =
+                "Resistance #2";
+
+            break;
+
+        case "Elemental":
+
+            options.style.display = "block";
+
+            affinity1.style.display = "block";
+            affinity1Label.style.display = "block";
+
+            affinity1Label.textContent =
+                "Additional Immunity";
+
+            break;
+
+        case "Plant":
+
+            options.style.display = "block";
+
+            affinity1.style.display = "block";
+            affinity1Label.style.display = "block";
+
+            affinity1Label.textContent =
+                "Elemental Vulnerability";
+
+            break;
     }
 }
 
@@ -230,14 +281,6 @@ switch (species) {
 
     setAffinity(affinity1, 1);
     setAffinity(affinity2, 1);
-
-    character.specialRules.push(
-        `Resistant to ${affinity1} damage.`
-    );
-
-    character.specialRules.push(
-        `Resistant to ${affinity2} damage.`
-    );
 
     break;
 
