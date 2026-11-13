@@ -153,6 +153,12 @@ function generateCharacter() {
     const species =
     document.getElementById("species").value;
 
+    const affinity1 =
+    document.getElementById("affinity1").value;
+
+const affinity2 =
+    document.getElementById("affinity2").value;
+    
     character.name = name;
 character.cr = cr;
 character.level = level;
@@ -214,6 +220,51 @@ switch (species) {
 
         break;
 
+        case "Demon":
+
+    setAffinity(affinity1, 1);
+    setAffinity(affinity2, 1);
+
+    character.specialRules.push(
+        `Resistant to ${affinity1} damage.`
+    );
+
+    character.specialRules.push(
+        `Resistant to ${affinity2} damage.`
+    );
+
+    break;
+
+        case "Elemental":
+
+    setAffinity("poison", 2);
+
+    setAffinity(affinity1, 2);
+
+    character.specialRules.push(
+        "Immune to poisoned."
+    );
+
+    break;
+
+        case "Plant":
+
+    applyVulnerability(affinity1);
+
+    character.specialRules.push(
+        "Immune to dazed, shaken and enraged."
+    );
+
+    break;
+
+}
+
+    if (
+    species === "Demon" &&
+    affinity1 === affinity2
+) {
+    warning.textContent =
+        "A Demon's two resistances should be different.";
 }
 
 for (const element in character.affinities) {
