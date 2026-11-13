@@ -104,12 +104,17 @@ button:hover {
 }
 
 .element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    text-align: center;
+    min-height: 55px;
+}
 
-    padding: .5rem;
-
-    font-weight: bold;
+.element div:last-child {
+    font-size: 0.8em;
+    font-weight: normal;
 }
 
 .neutral {
