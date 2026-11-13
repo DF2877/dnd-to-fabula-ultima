@@ -2,27 +2,44 @@ document
     .getElementById("generateBtn")
     .addEventListener("click", generateCharacter);
 
+function parseCR(value) {
+
+    value = value.trim();
+
+    if (value.includes("/")) {
+
+        const [num, den] = value.split("/");
+
+        return Number(num) / Number(den);
+    }
+
+    return Number(value);
+}
+
+function calculateLevel(cr) {
+
+    const doubled = cr * 2;
+
+    return Math.ceil(doubled / 5) * 5;
+}
+
 function generateCharacter() {
 
     const name =
         document.getElementById("name").value;
 
-    const race =
-        document.getElementById("race").value;
+    const crText =
+        document.getElementById("cr").value;
 
-    const charClass =
-        document.getElementById("class").value;
+    const cr =
+        parseCR(crText);
 
-    const strength =
-        Math.floor(Math.random() * 6) + 10;
+    const level =
+        calculateLevel(cr);
 
-    document.getElementById("characterSheet").innerHTML = `
-        <h2>${name || "Unnamed Character"}</h2>
+    document.getElementById("characterName").textContent =
+        name || "Unnamed Character";
 
-        <p><strong>Race:</strong> ${race}</p>
-
-        <p><strong>Class:</strong> ${charClass}</p>
-
-        <p><strong>Strength:</strong> ${strength}</p>
-    `;
+    document.getElementById("characterLevel").textContent =
+        level;
 }
