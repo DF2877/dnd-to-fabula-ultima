@@ -121,7 +121,7 @@ const character = {
 
 function convertAttribute(stat) {
 
-    let die = Math.round(stat / 12) * 2 + 6;
+    let die = Math.round(stat / 10) * 2 + 6;
 
     die = Math.max(6, die);
     die = Math.min(12, die);
