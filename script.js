@@ -43,3 +43,13 @@ function generateCharacter() {
     document.getElementById("characterLevel").textContent =
         level;
 }
+
+const traits = traitsInput
+    .split(",")
+    .map(t => t.trim())
+    .filter(t => t);
+
+if (traits.length !== 4) {
+    alert("Please enter exactly 4 traits.");
+    return;
+}
