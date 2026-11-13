@@ -226,3 +226,10 @@ ul {
 
     justify-content: space-between;
 }
+
+.warning {
+    color: #e0b15a;
+    font-size: 0.9rem;
+    min-height: 1.2rem;
+    margin-bottom: 1rem;
+}
