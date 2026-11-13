@@ -101,11 +101,33 @@ const character = {
 
     species: "",
 
+    stats: {
+
+        dex: 6,
+
+        ins: 6,
+
+        mig: 6,
+
+        wlp: 6
+
+    },
+
     affinities: {},
 
     specialRules: []
 
 };
+
+function convertAttribute(stat) {
+
+    let die = Math.round(stat / 12) * 2 + 6;
+
+    die = Math.max(6, die);
+    die = Math.min(12, die);
+
+    return die;
+}
 
 function parseCR(value) {
 
@@ -310,12 +332,46 @@ function generateCharacter() {
 
 const affinity2 =
     document.getElementById("affinity2").value;
+
+    const strength =
+    Number(document.getElementById("str").value);
+
+const dexterity =
+    Number(document.getElementById("dex").value);
+
+const constitution =
+    Number(document.getElementById("con").value);
+
+const intelligence =
+    Number(document.getElementById("int").value);
+
+const wisdom =
+    Number(document.getElementById("wis").value);
+
+const charisma =
+    Number(document.getElementById("cha").value);
     
     character.name = name;
 character.cr = cr;
 character.level = level;
 character.traits = traits;
 character.species = species;
+
+    character.stats.dex =
+    convertAttribute(dexterity);
+
+character.stats.ins =
+    convertAttribute(intelligence);
+
+character.stats.mig =
+    convertAttribute(
+        (strength + constitution) / 2
+    );
+
+character.stats.wlp =
+    convertAttribute(
+        (wisdom + charisma) / 2
+    );
     
     document.getElementById("characterName").textContent =
         name || "Unnamed Character";
@@ -331,6 +387,22 @@ character.species = species;
 
     document.getElementById("characterSpecies")
     .textContent = character.species;
+
+    document.getElementById("dexValue")
+    .textContent =
+    `d${character.stats.dex}`;
+
+document.getElementById("insValue")
+    .textContent =
+    `d${character.stats.ins}`;
+
+document.getElementById("migValue")
+    .textContent =
+    `d${character.stats.mig}`;
+
+document.getElementById("wlpValue")
+    .textContent =
+    `d${character.stats.wlp}`;
 
 character.affinities = resetAffinities();
 
