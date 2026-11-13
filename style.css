@@ -192,14 +192,22 @@ ul {
 }
 
 .defenses {
-    width: 180px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
 }
 
 .defenses div {
+
     padding: 1rem;
+
     text-align: center;
-    border: 1px solid #555;
+
     background: #222;
+
+    border: 1px solid #555;
+
     font-weight: bold;
 }
 
@@ -216,9 +224,14 @@ ul {
 }
 
 .resources div {
+
     padding: 1rem;
+
     text-align: center;
+
     font-weight: bold;
+
+    border: 1px solid #555;
 }
 
 .combat-secondary {
@@ -236,27 +249,15 @@ ul {
     font-weight: bold;
 }
 
-.resources {
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.hp {
+    background: #8b1e1e;
 }
 
-.resources div {
-
-    padding: 1rem;
-
-    text-align: center;
-
-    font-weight: bold;
-
-    border: 1px solid #555;
-}
-
-.hp,
 .mp {
-
-    font-size: 1.3rem;
-
-    color: white;
+    background: #0074c7;
 }
+
+.initiative {
+    background: #222;
+}
+
