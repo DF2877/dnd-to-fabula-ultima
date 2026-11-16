@@ -17,37 +17,47 @@ body {
     height: 100vh;
 }
 
-.input-panel {
-    width: 50%;
-    padding: 2rem;
-    background: #1e1e1e;
-    padding-bottom: 100px;
-    overflow-y: auto;
-}
-
+.input-panel,
 .sheet-panel {
-    width: 50%;
-    padding: 2rem;
-    background: #252525;
-    padding-bottom: 100px;
+
+    height: 100%;
+
+    flex: 1;
+
     overflow-y: auto;
+
+    padding: 2rem;
+
+    padding-bottom: 100px;
 }
 
-.generate-button {
+.panel-button {
 
-    position: fixed;
+    left: 20px;
+
+    right: 20px;
 
     bottom: 20px;
 
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 300px;
-
     z-index: 1000;
 
-    box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    flex-shrink: 0;
+
+    margin: 1rem;
+}
+
+.left-panel-wrapper,
+.right-panel-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+.right-panel-wrapper .panel-button {
+    background: #3e8c59;
 }
 
 input,
