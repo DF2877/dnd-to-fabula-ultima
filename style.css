@@ -82,6 +82,14 @@ body {
     flex-shrink: 0;
 }
 
+.left-panel-wrapper .panel-footer {
+    background: #1f1f1f;
+}
+
+.right-panel-wrapper .panel-footer {
+    background: #242424;
+}
+
 .right-panel-wrapper .panel-button {
     background: #3e8c59;
 }
