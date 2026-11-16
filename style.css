@@ -7,6 +7,9 @@ body {
     font-family: Arial, sans-serif;
     background: #121212;
     color: #e0e0e0;
+
+    height: 100vh;
+    overflow: hidden;
 }
 
 .container {
@@ -18,13 +21,33 @@ body {
     width: 50%;
     padding: 2rem;
     background: #1e1e1e;
+    padding-bottom: 100px;
+    overflow-y: auto;
 }
 
 .sheet-panel {
     width: 50%;
     padding: 2rem;
     background: #252525;
+    padding-bottom: 100px;
     overflow-y: auto;
+}
+
+.generate-button {
+
+    position: fixed;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 300px;
+
+    z-index: 1000;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.4);
 }
 
 input,
