@@ -40,6 +40,25 @@ const allElements = [
 
 ];
 
+const speciesMap = {
+
+    "Aberration": "Monster",
+    "Beast": "Beast",
+    "Celestial": "Monster",
+    "Construct": "Construct",
+    "Dragon": "Monster",
+    "Elemental": "Elemental",
+    "Fey": "Elemental",
+    "Fiend": "Demon",
+    "Giant": "Humanoid",
+    "Humanoid": "Humanoid",
+    "Monstrosity": "Monster",
+    "Ooze": "Monster",
+    "Plant": "Plant",
+    "Undead": "Undead"
+
+};
+
 function validateTraits() {
 
     const traits =
@@ -324,8 +343,8 @@ function generateCharacter() {
 
     validateTraits();
 
-    const species =
-    document.getElementById("species").value;
+    const creatureType =
+    document.getElementById("creatureType").value;
 
     const affinity1 =
     document.getElementById("affinity1").value;
@@ -355,6 +374,10 @@ const charisma =
 character.cr = cr;
 character.level = level;
 character.traits = traits;
+
+    const species =
+    speciesMap[creatureType];
+
 character.species = species;
 
     character.stats.dex =
