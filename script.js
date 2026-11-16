@@ -7,7 +7,7 @@ document
     .addEventListener("input", validateTraits);
 
 document
-    .getElementById("species")
+    .getElementById("creatureType")
     .addEventListener("change", updateSpeciesInputs);
 
 document
@@ -86,7 +86,7 @@ function validateTraits() {
 function validateAffinities() {
 
     const species =
-        document.getElementById("species").value;
+    speciesMap[creatureType];
 
     const affinity1 =
         document.getElementById("affinity1").value;
@@ -190,7 +190,7 @@ function populateAffinityDropdown(dropdown, options) {
 function updateSpeciesInputs() {
 
     const species =
-        document.getElementById("species").value;
+    speciesMap[creatureType];
 
     const options =
         document.getElementById("affinityOptions");
