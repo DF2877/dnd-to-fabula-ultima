@@ -17,23 +17,41 @@ body {
     height: 100vh;
 }
 
-.input-panel,
+.input-panel {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    background: #1e1e1e;
+
+    padding: 2rem;
+}
+
 .sheet-panel {
 
     flex: 1;
 
     overflow-y: auto;
+
+    background: #252525;
+
+    padding: 2rem;
 }
 
 .panel-button {
 
     flex-shrink: 0;
 
-    margin: 1rem;
+    margin: 0;
+
+    border-radius: 0;
 }
 
 .left-panel-wrapper,
 .right-panel-wrapper {
+
+    flex: 1;
 
     display: flex;
 
