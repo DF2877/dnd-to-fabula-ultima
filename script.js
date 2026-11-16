@@ -85,6 +85,9 @@ function validateTraits() {
 
 function validateAffinities() {
 
+    const creatureType =
+    document.getElementById("creatureType").value;
+    
     const species =
     speciesMap[creatureType];
 
@@ -189,6 +192,9 @@ function populateAffinityDropdown(dropdown, options) {
 
 function updateSpeciesInputs() {
 
+    const creatureType =
+    document.getElementById("creatureType").value;
+    
     const species =
     speciesMap[creatureType];
 
