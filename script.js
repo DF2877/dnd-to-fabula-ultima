@@ -411,9 +411,6 @@ character.stats.wlp =
     document.getElementById("characterTraits").textContent =
         traits.join(", ");
 
-    character.species =
-    document.getElementById("species").value;
-
     document.getElementById("characterSpecies")
     .textContent = character.species;
 
