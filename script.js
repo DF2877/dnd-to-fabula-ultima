@@ -1,22 +1,37 @@
 document
-    .getElementById("generateBtn")
-    .addEventListener("click", generateCharacter);
+    .getElementById("name")
+    .addEventListener("input", updateCharacter);
 
 document
     .getElementById("traits")
-    .addEventListener("input", validateTraits);
+    .addEventListener("input", updateCharacter);
+
+document
+    .getElementById("cr")
+    .addEventListener("input", updateCharacter);
 
 document
     .getElementById("creatureType")
-    .addEventListener("change", updateSpeciesInputs);
+    .addEventListener("change", () => {
+
+        updateSpeciesInputs();
+        updateCharacter();
+
+    });
 
 document
     .getElementById("affinity1")
-    .addEventListener("change", validateAffinities);
+    .addEventListener("change", updateCharacter);
 
 document
     .getElementById("affinity2")
-    .addEventListener("change", validateAffinities);
+    .addEventListener("change", updateCharacter);
+
+document
+    .querySelectorAll(".attribute-inputs input")
+    .forEach(input => {
+        input.addEventListener("input", updateCharacter);
+    });
 
 const affinityText = {
     "-1": "VU",
@@ -325,7 +340,7 @@ function applyVulnerability(element) {
 
 updateSpeciesInputs();
 
-function generateCharacter() {
+function updateCharacter() {
 
     const name =
         document.getElementById("name").value;
@@ -576,3 +591,6 @@ character.specialRules.forEach(rule => {
 });
 
 }
+
+updateSpeciesInputs();
+updateCharacter();
