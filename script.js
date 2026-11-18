@@ -33,6 +33,12 @@ document
         input.addEventListener("input", updateCharacter);
     });
 
+document
+    .getElementById("addAttackBtn")
+    .addEventListener("click", addAttackInput);
+
+let attackCounter = 0;
+
 const affinityText = {
     "-1": "VU",
     "0": "",
@@ -338,6 +344,31 @@ function applyVulnerability(element) {
     character.affinities[element]--;
 }
 
+function addAttackInput() {
+
+    const attacksContainer =
+        document.getElementById("attacksContainer");
+
+    const attackDiv =
+        document.createElement("div");
+
+    attackDiv.className = "attack-input";
+
+    attackDiv.innerHTML = `
+        <label>Attack Name</label>
+        <input
+            type="text"
+            class="attackName"
+            placeholder="Attack Name"
+        >
+    `;
+
+    attacksContainer.appendChild(attackDiv);
+
+    attackCounter++;
+
+}
+
 updateSpeciesInputs();
 
 function updateCharacter() {
@@ -590,7 +621,51 @@ character.specialRules.forEach(rule => {
     ruleList.appendChild(li);
 });
 
+    character.attacks = [];
+
+
+let nextAttackId = 1;
+    
+document
+    .querySelectorAll(".attack-input")
+    .forEach(attackDiv => {
+
+        const name =
+            attackDiv
+                .querySelector(".attackName")
+                .value
+                .trim();
+
+        if (!name) {
+            return;
+        }
+
+        character.attacks.push({
+            id: nextAttackId++,
+            name: name
+        });
+
+    });
+
+    const attacksList =
+    document.getElementById("attacksList");
+
+attacksList.innerHTML = "";
+
+character.attacks.forEach(attack => {
+
+    const li =
+        document.createElement("li");
+
+    li.textContent =
+        attack.name;
+
+    attacksList.appendChild(li);
+
+});
+
 }
 
+addAttackInput();
 updateSpeciesInputs();
 updateCharacter();
