@@ -360,18 +360,23 @@ function addAttackInput() {
         nextAttackId++;
     
     attackDiv.innerHTML = `
+    
+    <div class="attackRow">
+
         <input
             type="text"
             class="attackName"
-            placeholder="Attack Name"
-        >
+            placeholder="Attack Name">
 
-    <button
-        type="button"
-        class="deleteAttackBtn">
-        Delete Attack
-    </button>
-    `;
+        <button
+            type="button"
+            class="deleteAttackBtn">
+            Delete
+        </button>
+
+    </div>
+
+`;
 
     attacksContainer.appendChild(attackDiv);
 
