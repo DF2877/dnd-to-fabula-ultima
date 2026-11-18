@@ -344,6 +344,8 @@ function applyVulnerability(element) {
     character.affinities[element]--;
 }
 
+let nextAttackId = 0;
+
 function addAttackInput() {
 
     const attacksContainer =
@@ -354,16 +356,42 @@ function addAttackInput() {
 
     attackDiv.className = "attack-input";
 
+    attackDiv.dataset.attackId =
+        nextAttackId++;
+    
     attackDiv.innerHTML = `
-        <label>Attack Name</label>
         <input
             type="text"
             class="attackName"
             placeholder="Attack Name"
         >
+
+    <button
+        type="button"
+        class="deleteAttackBtn">
+        Delete Attack
+    </button>
     `;
 
     attacksContainer.appendChild(attackDiv);
+
+    const input =
+    attackDiv.querySelector(".attackName");
+
+    attackDiv
+    .querySelector(".deleteAttackBtn")
+    .addEventListener("click", () => {
+
+        attackDiv.remove();
+
+        updateCharacter();
+
+    });
+
+input.addEventListener(
+    "input",
+    updateCharacter
+);
 
     attackCounter++;
 
@@ -623,9 +651,6 @@ character.specialRules.forEach(rule => {
 
     character.attacks = [];
 
-
-let nextAttackId = 1;
-    
 document
     .querySelectorAll(".attack-input")
     .forEach(attackDiv => {
@@ -641,8 +666,14 @@ document
         }
 
         character.attacks.push({
-            id: nextAttackId++,
+
+            id:
+                Number(
+                    attackDiv.dataset.attackId
+                ),
+
             name: name
+
         });
 
     });
