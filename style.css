@@ -346,3 +346,41 @@ ul {
     text-align: center;
     margin-bottom: 0;
 }
+
+.attackRow {
+
+    display: flex;
+
+    gap: 0.5rem;
+
+    align-items: center;
+}
+
+.attackRow .attackName {
+
+    flex: 1;
+
+    margin-bottom: 0;
+}
+
+.deleteAttackBtn {
+
+    width: auto;
+
+    margin: 0;
+
+    background: #a32020;
+
+    border: 1px solid #c04545;
+
+    color: white;
+
+    padding: 0.75rem 1rem;
+
+    flex-shrink: 0;
+}
+
+.deleteAttackBtn:hover {
+
+    background: #c02b2b;
+}
