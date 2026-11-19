@@ -363,6 +363,15 @@ ul {
     margin-bottom: 0;
 }
 
+.attackRow .attackRange {
+
+    width: 100px;
+
+    margin-bottom: 0;
+
+    flex-shrink: 0;
+}
+
 .deleteAttackBtn {
 
     width: auto;
