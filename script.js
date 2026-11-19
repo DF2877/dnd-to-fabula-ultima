@@ -156,7 +156,9 @@ const character = {
 
     affinities: {},
 
-    specialRules: []
+    specialRules: [],
+
+    skillBudget: 0
 
 };
 
@@ -359,8 +361,6 @@ function addAttackInput() {
     
     attackDiv.innerHTML = `
 
-    <label>Attack</label>
-
     <div class="attackRow">
 
         <input
@@ -444,6 +444,33 @@ function getSecondaryAttackAttribute(range) {
     }
 
     return bestAttribute;
+}
+
+function calculateSkillBudget() {
+
+    let budget = 0;
+
+    budget += Math.floor(
+        character.level / 10
+    );
+
+    for (const element in character.affinities) {
+
+        if (
+            character.affinities[element] === -1
+        ) {
+
+            budget +=
+                element === "physical"
+                ? 2
+                : 1;
+
+        }
+
+    }
+
+    return budget;
+
 }
 
 updateSpeciesInputs();
@@ -681,22 +708,8 @@ for (const element in character.affinities) {
 
     validateAffinities();
 
-const ruleList =
-    document.getElementById(
-        "specialRulesList"
-    );
-
-ruleList.innerHTML = "";
-
-character.specialRules.forEach(rule => {
-
-    const li =
-        document.createElement("li");
-
-    li.textContent = rule;
-
-    ruleList.appendChild(li);
-});
+    character.skillBudget =
+    calculateSkillBudget();
 
     character.attacks = [];
 
@@ -763,6 +776,23 @@ character.attacks.forEach(attack => {
 
     attacksList.appendChild(li);
 
+});
+
+const ruleList =
+    document.getElementById(
+        "specialRulesList"
+    );
+
+ruleList.innerHTML = "";
+
+character.specialRules.forEach(rule => {
+
+    const li =
+        document.createElement("li");
+
+    li.textContent = rule;
+
+    ruleList.appendChild(li);
 });
 
 }
