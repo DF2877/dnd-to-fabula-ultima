@@ -418,6 +418,40 @@ input.addEventListener(
 
 }
 
+function getSecondaryAttackAttribute(range) {
+
+    const priorities =
+        range === "Melee"
+            ? ["MIG", "DEX", "WLP", "INS"]
+            : ["DEX", "MIG", "INS", "WLP"];
+
+    let bestAttribute =
+        priorities[0];
+
+    let bestValue =
+        character.stats[
+            bestAttribute.toLowerCase()
+        ];
+
+    for (const attribute of priorities) {
+
+        const value =
+            character.stats[
+                attribute.toLowerCase()
+            ];
+
+        if (value > bestValue) {
+
+            bestValue = value;
+
+            bestAttribute = attribute;
+        }
+
+    }
+
+    return bestAttribute;
+}
+
 updateSpeciesInputs();
 
 function updateCharacter() {
@@ -716,12 +750,22 @@ character.attacks.forEach(attack => {
         document.createElement("li");
 
     const icon =
-    attack.range === "ranged"
-        ? "🏹"
-        : "⚔️";
+        attack.range === "Ranged"
+            ? "🏹"
+            : "⚔️";
 
-li.textContent =
-    `${icon} ${attack.name} •【??? + ???】•【HR + 5】 damage`;
+    const primary =
+        attack.range === "Melee"
+            ? "MIG"
+            : "DEX";
+
+    const secondary =
+        getSecondaryAttackAttribute(
+            attack.range
+        );
+
+    li.textContent =
+        `${icon} ${attack.name} •【${primary} + ${secondary}】•【HR + 5】 physical damage`;
 
     attacksList.appendChild(li);
 
