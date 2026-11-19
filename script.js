@@ -360,7 +360,9 @@ function addAttackInput() {
         nextAttackId++;
     
     attackDiv.innerHTML = `
-    
+
+    <label>Attack</label>
+
     <div class="attackRow">
 
         <input
@@ -368,10 +370,24 @@ function addAttackInput() {
             class="attackName"
             placeholder="Attack Name">
 
+        <select class="attackRange">
+
+            <option value="melee">
+                Melee
+            </option>
+
+            <option value="ranged">
+                Ranged
+            </option>
+
+        </select>
+
         <button
             type="button"
             class="deleteAttackBtn">
+
             Delete
+
         </button>
 
     </div>
@@ -670,16 +686,22 @@ document
             return;
         }
 
+        const range =
+    attackDiv
+        .querySelector(".attackRange")
+        .value;
+
         character.attacks.push({
 
-            id:
-                Number(
-                    attackDiv.dataset.attackId
-                ),
+    id: Number(
+        attackDiv.dataset.attackId
+    ),
 
-            name: name
+    name: name,
 
-        });
+    range: range
+
+});
 
     });
 
