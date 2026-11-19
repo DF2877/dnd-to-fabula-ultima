@@ -37,8 +37,6 @@ document
     .getElementById("addAttackBtn")
     .addEventListener("click", addAttackInput);
 
-let attackCounter = 0;
-
 const affinityText = {
     "-1": "VU",
     "0": "",
@@ -394,27 +392,23 @@ function addAttackInput() {
 
 `;
 
-    attacksContainer.appendChild(attackDiv);
-
-    const input =
-    attackDiv.querySelector(".attackName");
-
     attackDiv
-    .querySelector(".deleteAttackBtn")
-    .addEventListener("click", () => {
+    .querySelectorAll("input, select")
+    .forEach(control => {
 
-        attackDiv.remove();
+        const eventType =
+            control.tagName === "SELECT"
+                ? "change"
+                : "input";
 
-        updateCharacter();
+        control.addEventListener(
+            eventType,
+            updateCharacter
+        );
 
     });
 
-input.addEventListener(
-    "input",
-    updateCharacter
-);
-
-    attackCounter++;
+    attacksContainer.appendChild(attackDiv);
 
 }
 
