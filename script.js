@@ -715,8 +715,13 @@ character.attacks.forEach(attack => {
     const li =
         document.createElement("li");
 
-    li.textContent =
-        attack.name;
+    const icon =
+    attack.range === "ranged"
+        ? "🏹"
+        : "⚔️";
+
+li.textContent =
+    `${icon} ${attack.name} •【??? + ???】•【HR + 5】 damage`;
 
     attacksList.appendChild(li);
 
