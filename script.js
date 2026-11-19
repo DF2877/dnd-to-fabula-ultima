@@ -421,7 +421,7 @@ input.addEventListener(
 function getSecondaryAttackAttribute(range) {
 
     const priorities =
-        range === "Melee"
+        range === "melee"
             ? ["MIG", "DEX", "WLP", "INS"]
             : ["DEX", "MIG", "INS", "WLP"];
 
@@ -750,12 +750,12 @@ character.attacks.forEach(attack => {
         document.createElement("li");
 
     const icon =
-        attack.range === "Ranged"
+        attack.range === "ranged"
             ? "🏹"
             : "⚔️";
 
     const primary =
-        attack.range === "Melee"
+        attack.range === "melee"
             ? "MIG"
             : "DEX";
 
