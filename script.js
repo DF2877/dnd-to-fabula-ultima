@@ -169,6 +169,11 @@ const character = {
         wlp: 6
 
     },
+    
+armor: "No Armor",
+    
+def: 6,
+mdef: 6,
 
     affinities: {},
 
@@ -854,6 +859,164 @@ character.specialRules.forEach(rule => {
 
     ruleList.appendChild(li);
 });
+
+    const canUseArmor =
+    character.specialRules.includes(
+        "Use Equipment."
+    );
+
+    let armors = [
+    {
+        name: "No Armor",
+        def: character.stats.dex,
+        mdef: character.stats.ins
+    }
+];
+
+if (canUseArmor) {
+
+    armors.push(
+        {
+            name: "Silk Shirt",
+            def: character.stats.dex,
+            mdef: character.stats.ins + 2
+        },
+        {
+            name:
+                character.level < 20
+                ? "Travel Garb"
+                : "Combat Tunic",
+
+            def: character.stats.dex + 1,
+            mdef: character.stats.ins + 1
+        },
+        {
+            name: "Sage Robe",
+            def: character.stats.dex + 1,
+            mdef: character.stats.ins + 2
+        },
+        {
+            name: "Brigandine",
+            def: 10,
+            mdef: character.stats.ins
+        },
+        {
+            name: "Bronze Plate",
+            def: 11,
+            mdef: character.stats.ins
+        },
+        {
+            name: "Runic Plate",
+            def: 11,
+            mdef: character.stats.ins + 1
+        },
+        {
+            name: "Steel Plate",
+            def: 12,
+            mdef: character.stats.ins
+        }
+    );
+}
+
+    let bestArmor =
+    armors[0];
+
+let bestFit =
+    Math.abs(
+        bestArmor.def -
+        character.idealDef
+    )
+    +
+    Math.abs(
+        bestArmor.mdef -
+        character.idealMDef
+    );
+
+for (const armor of armors) {
+
+    const fit =
+        Math.abs(
+            armor.def -
+            character.idealDef
+        )
+        +
+        Math.abs(
+            armor.mdef -
+            character.idealMDef
+        );
+
+    if (fit < bestFit) {
+
+        bestFit = fit;
+
+        bestArmor = armor;
+    }
+}
+
+    character.armor =
+    bestArmor.name;
+
+character.def =
+    bestArmor.def;
+
+character.mdef =
+    bestArmor.mdef;
+
+    for (let i = 0; i < 2; i++) {
+
+    const currentFit =
+        Math.abs(
+            character.def -
+            character.idealDef
+        )
+        +
+        Math.abs(
+            character.mdef -
+            character.idealMDef
+        );
+
+    const fitA =
+        Math.abs(
+            character.def + 2 -
+            character.idealDef
+        )
+        +
+        Math.abs(
+            character.mdef + 1 -
+            character.idealMDef
+        );
+
+    const fitB =
+        Math.abs(
+            character.def + 1 -
+            character.idealDef
+        )
+        +
+        Math.abs(
+            character.mdef + 2 -
+            character.idealMDef
+        );
+
+    const bestNewFit =
+        Math.min(fitA, fitB);
+
+    if (bestNewFit >= currentFit) {
+        break;
+    }
+
+    if (fitA <= fitB) {
+
+        character.def += 2;
+        character.mdef += 1;
+
+    } else {
+
+        character.def += 1;
+        character.mdef += 2;
+    }
+
+    character.skillCount++;
+}
 
 }
 
