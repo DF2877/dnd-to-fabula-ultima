@@ -45,6 +45,20 @@ document
     .getElementById("addAttackBtn")
     .addEventListener("click", addAttackInput);
 
+document
+    .getElementById("exportBtn")
+    .addEventListener("click", () => {
+
+        console.log(
+            JSON.stringify(
+                character,
+                null,
+                2
+            )
+        );
+
+    });
+
 const affinityText = {
     "-1": "VU",
     "0": "",
