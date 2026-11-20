@@ -855,6 +855,14 @@ document
     const attacksList =
     document.getElementById("attacksList");
 
+    const accuracyBonus =
+    Math.floor(character.level / 10);
+
+const damageBonus =
+    5 + 5 * Math.floor(
+        (character.level - 1) / 20
+    );
+    
 attacksList.innerHTML = "";
 
 character.attacks.forEach(attack => {
@@ -878,7 +886,7 @@ character.attacks.forEach(attack => {
         );
 
     li.textContent =
-        `${icon} ${attack.name} •【${primary} + ${secondary}】•【HR + 5】 physical damage`;
+    `${icon} ${attack.name} •【${primary} + ${secondary} + ${accuracyBonus}】•【HR + ${damageBonus}】 physical damage`;
 
     attacksList.appendChild(li);
 
