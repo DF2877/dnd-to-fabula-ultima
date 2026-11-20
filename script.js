@@ -177,6 +177,9 @@ mdef: 6,
 
     initiative: 0,
 
+    hp: 0,
+mp: 0,
+
     affinities: {},
 
     specialRules: [],
@@ -1065,6 +1068,22 @@ document.getElementById("mdefValue")
     "initiativeValue"
 ).textContent =
     Math.round(character.initiative);
+
+    character.hp =
+    2 * character.level
+    + 5 * character.stats.mig;
+
+character.mp =
+    character.level
+    + 5 * character.stats.wlp;
+
+    document.getElementById("hpValue")
+    .textContent =
+    character.hp;
+
+document.getElementById("mpValue")
+    .textContent =
+    character.mp;
 
 }
 
