@@ -69,15 +69,15 @@ const affinityText = {
 
 const allElements = [
 
+    { value: "physical", label: "Physical" },
+    { value: "air", label: "Air" },
+    { value: "bolt", label: "Bolt" },
+    { value: "dark", label: "Dark" },
+    { value: "earth", label: "Earth" },
     { value: "fire", label: "Fire" },
     { value: "ice", label: "Ice" },
-    { value: "bolt", label: "Bolt" },
-    { value: "earth", label: "Earth" },
-    { value: "air", label: "Air" },
     { value: "light", label: "Light" },
-    { value: "dark", label: "Dark" },
-    { value: "poison", label: "Poison" },
-    { value: "physical", label: "Physical" }
+    { value: "poison", label: "Poison" }
 
 ];
 
@@ -383,15 +383,15 @@ function updateSpeciesInputs() {
 function resetAffinities() {
 
     return {
+        physical: 0,
+        air: 0,
+        bolt: 0,
+        dark: 0,
+        earth: 0,
         fire: 0,
         ice: 0,
-        bolt: 0,
-        earth: 0,
-        air: 0,
         light: 0,
-        dark: 0,
-        poison: 0,
-        physical: 0
+        poison: 0
     };
 }
 
