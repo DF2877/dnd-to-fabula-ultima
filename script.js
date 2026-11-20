@@ -1018,6 +1018,14 @@ character.mdef =
     character.skillCount++;
 }
 
+    document.getElementById("defValue")
+    .textContent =
+    Math.round(character.def);
+
+document.getElementById("mdefValue")
+    .textContent =
+    Math.round(character.mdef);
+
 }
 
 addAttackInput();
