@@ -11,6 +11,14 @@ document
     .addEventListener("input", updateCharacter);
 
 document
+    .getElementById("hpInput")
+    .addEventListener("input", updateCharacter);
+
+document
+    .getElementById("acInput")
+    .addEventListener("input", updateCharacter);
+
+document
     .getElementById("creatureType")
     .addEventListener("change", () => {
 
@@ -135,6 +143,10 @@ const character = {
     name: "",
 
     cr: 0,
+
+    hpInput: 0,
+
+    acInput: 0,
 
     level: 0,
 
@@ -485,6 +497,16 @@ function updateCharacter() {
             document.getElementById("cr").value
         );
 
+    const hpInput =
+    Number(
+        document.getElementById("hpInput").value
+    );
+
+const acInput =
+    Number(
+        document.getElementById("acInput").value
+    );
+
     const level =
         calculateLevel(cr);
 
@@ -528,6 +550,8 @@ const charisma =
     
     character.name = name;
 character.cr = cr;
+    character.hpInput = hpInput;
+character.acInput = acInput;
 character.level = level;
 character.traits = traits;
 
