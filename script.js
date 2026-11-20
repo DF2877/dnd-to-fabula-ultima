@@ -991,6 +991,13 @@ character.mdef =
 
     for (let i = 0; i < 2; i++) {
 
+        if (
+        character.skillCount >=
+        character.skillBudget
+    ) {
+        break;
+    }
+
     const currentFit =
         Math.abs(
             character.def -
