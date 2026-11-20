@@ -1080,9 +1080,30 @@ document.getElementById("mdefValue")
     2 * character.level
     + 5 * character.stats.mig;
 
+    while (
+
+    character.skillCount <
+    character.skillBudget
+
+    &&
+
+    character.hp + 10 <=
+    character.idealHp
+
+) {
+
+    character.hp += 10;
+
+    character.skillCount++;
+
+}
+
 character.mp =
     character.level
     + 5 * character.stats.wlp;
+
+    /* TODO +10 MP if spell count is odd 
+    or to spend excess skills */
 
     document.getElementById("hpValue")
     .textContent =
