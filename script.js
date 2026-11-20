@@ -175,11 +175,35 @@ armor: "No Armor",
 def: 6,
 mdef: 6,
 
+    initiative: 0,
+
     affinities: {},
 
     specialRules: [],
 
     skillBudget: 0
+
+};
+
+const initiativeModifiers = {
+
+    "No Armor": 0,
+
+    "Silk Shirt": -1,
+
+    "Travel Garb": -1,
+
+    "Combat Tunic": 0,
+
+    "Sage Robe": -2,
+
+    "Brigandine": -2,
+
+    "Bronze Plate": -3,
+
+    "Runic Plate": -3,
+
+    "Steel Plate": -4
 
 };
 
@@ -1025,6 +1049,22 @@ character.mdef =
 document.getElementById("mdefValue")
     .textContent =
     Math.round(character.mdef);
+
+    character.initiative =
+
+    (character.stats.dex +
+     character.stats.ins) / 2
+
+    +
+
+    initiativeModifiers[
+        character.armor
+    ];
+
+    document.getElementById(
+    "initiativeValue"
+).textContent =
+    Math.round(character.initiative);
 
 }
 
