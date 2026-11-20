@@ -144,9 +144,13 @@ const character = {
 
     cr: 0,
 
-    hpInput: 0,
+    skillCount: 0,
 
-    acInput: 0,
+    idealHp: 30,
+
+    idealDef: 6,
+
+    idealMDef: 6,
 
     level: 0,
 
@@ -489,6 +493,8 @@ updateSpeciesInputs();
 
 function updateCharacter() {
 
+    character.skillCount = 0;
+    
     const name =
         document.getElementById("name").value;
 
@@ -550,8 +556,38 @@ const charisma =
     
     character.name = name;
 character.cr = cr;
-    character.hpInput = hpInput;
-character.acInput = acInput;
+
+    character.idealHp =
+    30 + hpInput / 5;
+
+character.idealDef =
+    6 + (acInput - 5) / 3;
+
+    character.idealDef =
+    Math.max(
+        6,
+        Math.min(
+            12,
+            character.idealDef
+        )
+    );
+    
+    const effectiveMDefAC =
+    (acInput + wisdom) / 2;
+    
+character.idealMDef =
+    6 +
+    (effectiveMDefAC - 5) / 3;
+
+    character.idealMDef =
+    Math.max(
+        6,
+        Math.min(
+            12,
+            character.idealMDef
+        )
+    );
+    
 character.level = level;
 character.traits = traits;
 
